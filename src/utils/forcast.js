@@ -7,8 +7,11 @@ const weather = (lat, lon, callback) => {
        .then(response => {
            callback(undefined, {
                Min: response.data.main.temp_min,
-               Max: response.data.main.temp_max
-           })
+               Max: response.data.main.temp_max,
+               info: response.data.weather[0].main,
+               loc: response.data.name,
+               Des: response.data.weather[0].description
+            })
         })
         .catch(error => {
             callback('Cannot find temperature updates', undefined)

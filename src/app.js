@@ -54,11 +54,13 @@ app.get('/weather', (req, res) => {
             return res.send({ error })
         }
 
-        weather(latitude, longitude, (error,{ Min, Max}) =>{
+        weather(latitude, longitude, (error,{ Min, Max, loc, info, Des}) =>{
             return res.send({
+                Location: loc,
                 Minimum: Min,
                 Maximum: Max,
-                Location: location
+                Condition: info,
+                Description: Des
             })
         })
     })
